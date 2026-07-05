@@ -1,0 +1,13 @@
+# MATLAB
+*.asv
+*.m~
+slprj/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# FEMM temp/output files generated at run time
+*.fem
+*.ans
+*.res
