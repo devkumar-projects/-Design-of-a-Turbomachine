@@ -19,6 +19,10 @@
   <a href="#"><img src="https://img.shields.io/badge/License-MIT-lightgrey" /></a>
 </p>
 
+<p align="center">
+  <a href="docs/Compact_Axial_Hydraulic_Turbine_Report.pdf"><img src="https://img.shields.io/badge/📄%20Full%20Report-Compact%20Axial%20Hydraulic%20Turbine%20(PDF)-c0392b?style=for-the-badge" /></a>
+</p>
+
 ## Overview
 
 This repository documents the end-to-end engineering design of a **compact axial (Kaplan-type) hydraulic turbine**, carried out as a multidisciplinary study (*Bureau d'Etudes*) at **Arts et Metiers ParisTech (ENSAM)**. The project follows a single design thread from first principles to an industrial deployment scenario:
