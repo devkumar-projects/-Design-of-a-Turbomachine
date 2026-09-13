@@ -6,11 +6,18 @@
 % Version 2025
 % Base template: Jean-Frederic Charpentier (ENSAM course supervisor)
 
-clear all;
+clearvars;
 close all;
-% Set this path to the local FEMM installation directory
-addpath C:\femm42\mfiles
-savepath;
+
+% FEMM is an external dependency. Configure it per machine without mutating
+% the user's global MATLAB path.
+femmMfiles = getenv('FEMM_MFILES');
+if isempty(femmMfiles) || ~isfolder(femmMfiles)
+    error('Turbine:MissingFEMM', ...
+        ['Set the FEMM_MFILES environment variable to the FEMM mfiles ' ...
+         'directory before running this script.']);
+end
+addpath(femmMfiles);
 openfemm;
 newdocument(0)
 % degree-to-radian conversion factor
