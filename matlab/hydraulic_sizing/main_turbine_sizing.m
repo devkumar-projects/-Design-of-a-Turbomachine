@@ -17,6 +17,15 @@
 
 clear; close all; clc;
 
+% Resolve helper functions and generated files relative to this script.
+scriptDirectory = fileparts(mfilename('fullpath'));
+repoRoot = fileparts(fileparts(scriptDirectory));
+outputDirectory = fullfile(repoRoot, 'outputs');
+if ~exist(outputDirectory, 'dir')
+    mkdir(outputDirectory);
+end
+addpath(scriptDirectory);
+
 turbineName = 'axial_kaplan_turbine';
 
 %% Constants
@@ -52,6 +61,13 @@ xlabel('H (m)'); ylabel('Residual');
 title('Graphical solution used to fix the design head');
 
 H = 3.8;                          % m, selected design head
+[~, graphicalIndex] = min(abs(residual));
+graphicalHead = H_scan(graphicalIndex);
+if abs(H - graphicalHead) > 0.2
+    warning('Turbine:HeadMismatch', ...
+        'Selected head %.3f m differs from graphical solution %.3f m.', ...
+        H, graphicalHead);
+end
 qv = (Nsq * H^0.75 / N)^2;        % m^3/s, corresponding flow rate
 
 fprintf('Design head H = %.2f m\n', H);
@@ -156,7 +172,7 @@ end
 %% -----------------------------------------------------------------
 %  Export point cloud for CATIA V5 (Generative Shape Design)
 %  -----------------------------------------------------------------
-export_name = 'blade_sections_GSD.xlsx';
+export_name = fullfile(outputDirectory, 'blade_sections_GSD.xlsx');
 export_table = {'StartLoft', '', ''};
 
 for u = 1:nr
@@ -175,6 +191,6 @@ end
 
 export_table = [export_table; {'EndLoft', '', ''}; {'End', '', ''}];
 
-xlswrite(export_name, export_table);
+writecell(export_table, export_name);
 fprintf('\nBlade point cloud exported to %s\n', export_name);
 fprintf('Import in CATIA V5 with GSD_PointSplineLoftFromExcel.xls\n');
