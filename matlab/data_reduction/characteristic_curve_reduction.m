@@ -65,8 +65,7 @@ for s = 1:numel(testSpeeds)
 
     skipped = sum(~isValid);
     if skipped > 0
-        fprintf('N = %d rpm: %d point(s) skipped (missing/non-numeric measurement)
-', N, skipped);
+        fprintf('N = %d rpm: %d point(s) skipped (missing/non-numeric measurement)\n', N, skipped);
     end
     block = block(isValid, :);
     if isempty(block)
@@ -80,8 +79,7 @@ for s = 1:numel(testSpeeds)
 
     physical = qv_m3h >= 0 & dP_Pa > 0 & P_mec >= 0 & eta >= 0 & eta <= 100;
     if any(~physical)
-        fprintf('N = %d rpm: %d physically invalid point(s) skipped
-', N, sum(~physical));
+        fprintf('N = %d rpm: %d physically invalid point(s) skipped\n', N, sum(~physical));
         qv_m3h = qv_m3h(physical);
         dP_Pa = dP_Pa(physical);
         P_mec = P_mec(physical);
