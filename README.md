@@ -149,7 +149,7 @@ matlab/data_reduction/characteristic_curve_reduction.m   % reduces data/RIM_test
 matlab/data_reduction/affinity_law_scaling.m       % turbine affinity-law speed scaling example
 ```
 
-The FEMM script (`electromagnetic/femm/pmsm_femm_field_analysis.m`) requires a local [FEMM](http://www.femm.info/) installation and the OctaveFEMM/MATLAB toolbox; update the `addpath` at the top of the file to your installation directory before running.
+The FEMM script (`electromagnetic/femm/pmsm_femm_field_analysis.m`) requires a local [FEMM](http://www.femm.info/) installation and the OctaveFEMM/MATLAB toolbox. Set the `FEMM_MFILES` environment variable to FEMM's `mfiles` directory before running; the script no longer assumes a machine-specific Windows path or modifies MATLAB's global path.
 
 The SIMBA model (`simulink_simba/pwm_converter_speed_control.jsimba`) can be opened directly in [SIMBA](https://simba.education/).
 
