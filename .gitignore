@@ -11,3 +11,6 @@ Thumbs.db
 *.fem
 *.ans
 *.res
+
+# Generated sizing exports
+outputs/
